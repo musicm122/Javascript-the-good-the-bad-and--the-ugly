@@ -6,6 +6,7 @@
 //function definitions..
 
 //function declaration ||the function statement
+//Global
 function add(a,b){
 	return a + b;
 }
@@ -20,6 +21,13 @@ var add = function (a, b) {
 var add = new function(a, b){
 	return a+b;
 }
+
+//Fibonacci sequence
+//each item is formed by adding the previous two
+function fib(n){
+   return n<2?n:fib(n-1)+fib(n-2);
+}
+
 
 // Where the 'Object' constructor creates an object wrapper for
 // a specific value, or where no value is passed will create an

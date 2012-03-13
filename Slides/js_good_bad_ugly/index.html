@@ -22,7 +22,9 @@
 	<link rel="stylesheet" href="../extensions/hash/deck.hash.css">
 	
 	<!-- Style theme. More available in /themes/style/ or create your own. -->
-	<link rel="stylesheet" href="../themes/style/web-2.0.css">
+	<!--<link rel="stylesheet" href="../themes/style/web-2.0.css">-->
+	<link rel="stylesheet" href="../themes/style/neon.css">
+	<!--<link rel="stylesheet" href="../themes/style/swiss.css">-->
 	
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 	<link rel="stylesheet" href="../themes/transition/horizontal-slide.css">
@@ -42,12 +44,12 @@
 	<img src="image.jpg" alt="Nevaeh" >
 	<pre><code>var Terrance = function() {
     var me = [
-        "Daddy",
-        "Professional Web Dev",
-        "Web Enthusiest",
-		"FANBOY",
-		"musicm122.blogspot.com"
-		];
+	"Daddy",
+	"Professional Web Dev",
+	"Web Enthusiest",
+	"FANBOY",
+	"musicm122.blogspot.com"
+	];
     return me;
 };</code></pre>
 </section>
@@ -93,8 +95,17 @@
 		<li>
 			<h3>The direction the world is moving</h3>
 		</li>
+		<li>
+			<h3>Javascript a Highly Expressive Language</h3>
+		</li>
+		<li>
+			<h3>Because Javascript loves you and wants to be your friend.</h3>
+		</li>
 	</ul>
 	
+</section>
+<section class="slide" id="Why-should-you-care">	
+		
 	<blockquote cite="Jeff Atwood">
 		<p>Atwood's Law: any application that can be written in JavaScript, will eventually be written in JavaScript.</p>
 		<p><cite>Jeff Atwood</cite></p>
@@ -107,12 +118,12 @@
 </section>
 
 <section class="slide" id="History">
-	<h2>A Spot of History</h2>
+	<h2>About Javascript</h2>
 	<br/>
 	<ul>
-		<li><h3>Written at Mosaic by Brendan Eich under the name Mocha</h3></li>
-		<li><h3>Influenced heavily by java, self and scheme</h3></li>
-		<li><h3>Currently Trademaked by Oracle:"JavaScript" is a trademark of Oracle Corporation.[19] It is used under license for technology invented and implemented by Netscape Communications and current entities such as the Mozilla Foundation</h3></li>
+		<li><h3>Written at Mosaic by Brendan Eich under the name Mocha and later <br />LiveScript, EMCAScript, and JScript</h3></li>
+		<li><h3>Influenced heavily by <br />java,self and scheme<br /></h3></li>
+		<li><h3>Currently Trademaked by Oracle:"JavaScript" is a trademark of Oracle Corporation. It is used under license for technology invented and implemented by Netscape Communications and current entities such as the Mozilla Foundation</h3></li>
 		<li><h3>EMCA standard 262</h3></li>
 	</ul>
 	
@@ -130,11 +141,62 @@
 	<h2>Objects</h2>
 	<ul>
 		<li><h3>Dynamic Collection of properties.</h3></li>
-		<li><h3>Key Value Pairs</h3></li>
 	</ul>
-	<pre><code>var newObject = {}; // or 
-	var newObject = Object.create(null); // or
-	var newObject = new Object();</code></pre>
+	<pre><code>var dog = {}; // or 
+var cat = Object.create(null); // or
+var mongoose = new Object();</code></pre>
+	
+	<ul>
+		<li>Can contain other objects or methods</li>
+	</ul>
+		<pre><code>var dog = {
+	bark:alert("WOOF!"),
+	color:"black",
+	age:3 
+};
+dog.bark(); 
+alert(dog.age);</code></pre>
+	
+</section>
+
+<section class="slide" id="Object3">
+	<h2>Objects</h2>
+	<ul>
+		<li><h3>Key Value Pairs</h3></li>
+		<li><h3>Think Built In Hashtables</h3></li>
+	</ul>
+<pre><code>var dog = {
+	bark:alert("WOOF!"),
+	color:"black",
+	age:3
+};</code></pre>
+<p>The property color can be referenced in two ways. Note there is no difference between the two</p>
+<pre><code>alert(dog.color);</code></pre>
+<pre><code>alert(dog["color"]);</code></pre>	
+</section>
+
+<section class="slide" id="InheritanceAndExtention">
+<h2>Objects</h2>
+<h3>JSON (Javascript Object Notation)<h3>
+	<p>Essentially a data interchange format derived from javascript objects</p>
+
+</section>
+
+<section class="slide" id="InheritanceAndExtention">
+<h1>Extention and Inheritance </h1>
+</section>
+
+<section class="slide" id="Extention">
+	<h2>Extention example</h2>
+	<pre><code>//usage: var str = " somestring ".trim();
+//output: "somestring"
+//Credits to http://blog.stevenlevithan.com/archives/faster-trim-javascript
+
+String.prototype.trim = function () {
+	return this.replace(/^\s\s*/, "").replace(/\s\s*$/, "");
+};
+</code></pre>
+
 </section>
 
 <section class="slide" id="ObjectExamples">
@@ -147,13 +209,21 @@
 
 <section class="slide" id="Functions2">
 	<h2>Functions</h2>
+	<h3>Functions Are First Class Citizens:</h3><br />
 	<ul>
-		<li><h3>Dynamic Collection of properties.</h3></li>
-	</ul>
-	<pre><code>var newObject = {}; // or 
-	var newObject = Object.create(null); // or
-	var newObject = new Object();</code></pre>
+		<li>Can be Passed as arguments</li>
+		<li>Can be Returned as values</li>
+		<li>Can be Assigned to a variable or stored in data structures.</li>
+		<li>Can be Nested</li>
+		<li>Can be Anonymous</li>
+	</ul><br />
+	<p>That can only mean one thing........</p>
 </section>
+
+<section class="slide" id="Functions">
+	<h1>Somebody say Closures!</h1>
+</section>
+
 
 
 <section class="slide" id="Functions3">
@@ -164,14 +234,14 @@
 	<pre><code>//function declaration ||the function statement
 function add(a,b){
 	return a + b;
-}
+}</code></pre>
 
-//The function expression (function operator)
+<pre><code>//The function expression (function operator)
 //Function Literal
 var add = function (a, b) {
     return a + b;
-};
-//The Function constructor
+};</code></pre>
+<pre><code>//The Function constructor
 
 var add = new function(a, b){
 	return a+b;
@@ -265,6 +335,9 @@ var add = new function(a, b){
 <section class="slide" id="digging-deeper">
 	<h2>Digging Deeper</h2>
 	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
+	<>t | Edit citation
+Citation added:
+
 </section>
 
 <!-- deck.navigation snippet -->
@@ -291,9 +364,9 @@ var add = new function(a, b){
 
 
 <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-<script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
-
+<!--<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>-->
+<script src="jquery-1.7.min.js"></script>
 <!-- Deck Core and extensions -->
 <script src="../core/deck.core.js"></script>
 <script src="../extensions/hash/deck.hash.js"></script>
