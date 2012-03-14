@@ -105,7 +105,7 @@
 	
 </section>
 <section class="slide" id="Why-should-you-care">	
-		
+		<h2>Quotes</h2>
 	<blockquote cite="Jeff Atwood">
 		<p>Atwood's Law: any application that can be written in JavaScript, will eventually be written in JavaScript.</p>
 		<p><cite>Jeff Atwood</cite></p>
@@ -131,6 +131,19 @@
 
 <section class="slide" id="Goodparts">
 	<h1>Javascript: The Good</h1>
+</section>
+
+<section class="slide" id="Goodparts">
+	<h2>Javascript: The Good</h2>
+	<li><h3>Objects & Functions</h3></li>
+	<ul>
+		<li><h3>Composition</h3></li>
+		<li><h3>Prototypes</h3></li>
+		<li><h3>Extending</h3></li>
+	</ul>
+	<ul>
+		<li><h3>Functional Programming Concepts</h3></li>
+	<ul>
 </section>
 
 <section class="slide" id="Object">
@@ -178,8 +191,9 @@ alert(dog.age);</code></pre>
 <section class="slide" id="InheritanceAndExtention">
 <h2>Objects</h2>
 <h3>JSON (Javascript Object Notation)<h3>
-	<p>Essentially a data interchange format derived from javascript objects</p>
-
+	<li><p>Essentially a data interchange format derived from javascript objects</p></li>
+	<br />
+	<h3>See Example</h3>
 </section>
 
 <section class="slide" id="InheritanceAndExtention">
@@ -196,9 +210,11 @@ String.prototype.trim = function () {
 	return this.replace(/^\s\s*/, "").replace(/\s\s*$/, "");
 };
 </code></pre>
-
 </section>
 
+<section class="slide" id="ObjectInheritance">
+	<h1>Object Inheritance Example</h1>
+</section>
 <section class="slide" id="ObjectExamples">
 	<h1>Object Examples</h1>
 </section>
@@ -207,45 +223,118 @@ String.prototype.trim = function () {
 	<h1>Functions</h1>
 </section>
 
-<section class="slide" id="Functions2">
-	<h2>Functions</h2>
-	<h3>Functions Are First Class Citizens:</h3><br />
-	<ul>
-		<li>Can be Passed as arguments</li>
-		<li>Can be Returned as values</li>
-		<li>Can be Assigned to a variable or stored in data structures.</li>
-		<li>Can be Nested</li>
-		<li>Can be Anonymous</li>
-	</ul><br />
-	<p>That can only mean one thing........</p>
-</section>
-
 <section class="slide" id="Functions">
-	<h1>Somebody say Closures!</h1>
+	<h2>Functions</h2>
+	<ul>
+		<li>Every function in JavaScript is actually a Function object. As it inherts from Object.prototype</li>
+		<li>Every function in JavaScript is actually a Function object.</li>
+	</ul>
 </section>
-
-
 
 <section class="slide" id="Functions3">
 	<h2>3 types of Function Definitions</h2>
-	<ul>
-		<li><h3>Dynamic Collection of properties.</h3></li>
-	</ul>
+	<li class="slide">
 	<pre><code>//function declaration ||the function statement
 function add(a,b){
 	return a + b;
 }</code></pre>
-
+</li>
+<li class="slide">
 <pre><code>//The function expression (function operator)
 //Function Literal
 var add = function (a, b) {
     return a + b;
 };</code></pre>
+</li>
+<li class="slide">
 <pre><code>//The Function constructor
 
 var add = new function(a, b){
 	return a+b;
 }</code></pre>
+</li>
+</section>
+
+<section class="slide" id="Functions2">
+	<h2>Functions</h2>
+	<h3>Functions Are First Class Citizens:</h3><br />
+	<ul>
+		<li class="slide">Can be Passed as arguments</li>
+		<li class="slide">Can be Returned as values</li>
+		<li class="slide">Can be Assigned to a variable or stored in data structures.</li>
+		<li class="slide">Can be Nested</li>
+		<li class="slide">Can be Anonymous (lambda)</li>
+	</ul><br />
+	<p class="slide">Where there are first class functions there are....</p>
+</section>
+
+<section class="slide" id="functions4">
+	<h1>Closures!</h1>
+</section>
+
+<section class="slide" id="functionClosures">
+	<h2>Closures</h2>
+	<ul>
+		<li>A closure is any function which closes over the environment in which it was defined. This means that it can access variables not in its parameter list.</li>
+	</ul>
+	<pre><code>function sayHello(name) {
+  var text = 'Hello ' + name;
+  var sayAlert = function() { alert(text); }
+  sayAlert();
+}</code></pre>
+</section>
+
+<section class="slide" id="closureEx">
+	<h1>Closure Example</h1>
+</section>
+
+<section class="slide" id="designPatterns">
+	<h1>Design Patterns</h1>
+</section>
+
+<section class="slide" id="badparts">
+	<h1>Bad Parts</h1>
+</section>
+
+<section class="slide" id="badparts">
+	<h1>UGLY</h1>
+</section>
+
+<section class="slide" id="ugly1">
+	<h1>Type Coercion</h1>
+</section>
+<section class="slide" id="badparts">
+	<h2>Type Coercion</h2>
+	<li>
+	<h3>"==" and "!="<br />
+		Javascript will coerce expressions on the fly (to Primitive) and then evaluate for truthiness value(to Bool)</h3>
+	</li><br />
+	<li>
+		<h3>"===" and "!==" <br />
+		No coercion is preformed, expressions are evaluated as is for truthiness</h3>
+	</li>
+</section>
+<section class="slide" id="badparts">
+	<h2>Type Coercion</h2>
+	<h3>Falsy Value</h3>
+	<pre>	
+""           ==   "0"           // false
+0            ==   ""            // true
+0            ==   "0"           // true
+false        ==   "false"       // false
+false        ==   "0"           // true
+false        ==   undefined     // false
+false        ==   null          // false
+null         ==   undefined     // true
+" \t\r\n"    ==   0             // true
+	</pre>
+</section>
+
+<section class="slide" id="badparts">
+	<h1>Ref To Spec ecma262-5<br />(rtfm)</h1>
+</section>
+<section class="" id="bp">
+	
 </section>
 
 <section class="slide" id="themes">

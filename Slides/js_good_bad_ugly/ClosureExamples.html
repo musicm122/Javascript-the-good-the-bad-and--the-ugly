@@ -1,0 +1,64 @@
+<html>
+<head></head>
+<body><h3>My Closure Example</h3>
+<a href="http://www.javascriptkit.com/javatutors/closures2.shtml">Original Example Ref</a>
+<input type="button" onclick="testList1();" value=" TestRun1 " />
+<input type="button" onclick="testList2();" value=" TestRun2 " />
+<div id="result" style="font-size:70px;">
+Results Go Here
+</div>
+</body>
+<script type="text/javascript">
+//Gets a ref to the result div
+var resultDiv = document.getElementById("result");
+
+//Builds an array containing strings in the format 'item# index'
+var buildList1 = function(list) {
+    var result = [],
+        i = 0,
+        appendStuff = function(myItem, myListItem) {
+            return (function() {
+                return myItem + ' ' + myListItem;
+            });
+        };
+    for (i = 0; i < list.length; i++) {
+        var item = 'item' + list[i];
+        //Setting the result
+        result.push(appendStuff(item, list[i]));
+    }
+
+    return result;
+};
+
+var testList1 = function() {
+
+    var fnlist = buildList1([1, 2, 3]),
+        j = 0;
+    // using j only to help prevent confusion - could use i
+    resultDiv.innerText = "Test 1 \r\n";
+    for (; j < fnlist.length; j++) {
+        resultDiv.innerText += fnlist[j]() + "\r\n";
+    }
+};
+
+var buildList2 = function(list) {
+    var result = [];
+    for (var i = 0; i < list.length; i++) {
+        var item = 'item' + list[i];
+        result.push(function() {
+            return item + ' ' + list[i];
+        });
+    }
+    return result;
+};
+
+function testList2() {
+    var fnlist = buildList2([1, 2, 3]);
+    // using j only to help prevent confusion - could use i
+    resultDiv.innerText = "Test 2 \r\n";
+    for (var j = 0; j < fnlist.length; j++) {
+        fnlist[j]();
+        resultDiv.innerText += fnlist[j]() + "\r\n";
+    }
+};
+</script>
